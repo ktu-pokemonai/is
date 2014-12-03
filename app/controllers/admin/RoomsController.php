@@ -45,7 +45,7 @@ class RoomsController extends \BaseController {
             return Redirect::route('admin.rooms.index');
         }
 
-        return Redirect::route('admin.rooms.edit', [$room->id]);
+        return Redirect::route('admin.rooms.create');
 
     }
 

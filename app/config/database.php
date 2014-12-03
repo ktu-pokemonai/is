@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'stud.if.ktu.lt',
+			'host'      => 'localhost',
 			'database'  => 'bendrabutis',
 			'username'  => 'root',
 			'password'  => 'Wie9Louthei5ahza',

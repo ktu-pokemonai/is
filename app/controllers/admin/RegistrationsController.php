@@ -45,7 +45,7 @@ class RegistrationsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-        User::register($registration);
+        $userdata = User::register($registration);
         $registration->delete();
 
 		if(Input::has('save_close')) {

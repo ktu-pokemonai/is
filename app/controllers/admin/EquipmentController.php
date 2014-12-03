@@ -29,7 +29,7 @@ class EquipmentController extends \BaseController {
             return Redirect::route('admin.rooms.equipment.index', [$room->id]);
         }
 
-        return Redirect::route('admin.rooms.equipment.edit', [$room->id, $equipment->id]);
+        return Redirect::route('admin.rooms.equipment.create', [$room->id]);
 	}
 
 	public function edit($roomId, $id)
@@ -43,7 +43,7 @@ class EquipmentController extends \BaseController {
 	public function update($roomId, $id)
 	{
         /** @var Room $room */
-        $room = Room::findOrFail($id);
+        $room = Room::findOrFail($roomId);
         /** @var Equipment $equipment */
         $equipment = Equipment::findOrFail($id);
 

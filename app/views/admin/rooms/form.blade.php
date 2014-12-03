@@ -7,5 +7,3 @@
     {{ Form::label('capacity', 'Capacity', ['class' => 'control-label']) }}
     {{ Form::text('capacity', null, ['class' => 'form-control']) }}
 </div>
-
-@include('admin.actions', ['back' => route('admin.rooms.index')])

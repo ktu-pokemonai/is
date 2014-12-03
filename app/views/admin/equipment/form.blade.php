@@ -22,7 +22,3 @@
     {{ Form::label('duration', 'Duration in minutes', ['class' => 'control-label']) }}
     {{ Form::text('duration', null, ['class' => 'form-control']) }}
 </div>
-
-<div class="form-group">
-    @include('admin.actions', ['back' => route('admin.rooms.equipment.index', [$room->id])])
-</div>

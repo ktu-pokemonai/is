@@ -12,7 +12,7 @@ Route::get('register', ['as' => 'register', 'uses' => 'HomeController@register']
 Route::post('register', ['uses' => 'HomeController@storeRegistration']);
 Route::resource('gallery', 'GalleryController');
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'before' => 'admin'], function() {
     Route::get('/', ['as' => 'admin.index', 'uses' => 'AdminController@index']);
     Route::resource('articles', 'ArticlesController');
     Route::resource('penalties', 'PenaltiesController');
@@ -25,7 +25,7 @@ Route::group(['prefix' => 'admin'], function() {
     Route::resource('registrations', 'RegistrationsController');
 });
 
-Route::group(['prefix' => 'manager'], function() {
+Route::group(['prefix' => 'manager', 'before' => 'manager'], function() {
     Route::get('/', ['as' => 'manager.index', 'uses' => 'ManagerController@index']);
     Route::resource('guests', 'GuestsController');
     Route::resource('trash', 'TrashController');
@@ -33,7 +33,7 @@ Route::group(['prefix' => 'manager'], function() {
     Route::resource('keys', 'KeyIssuesController');
 });
 
-Route::group(['prefix' => 'user'], function() {
+Route::group(['prefix' => 'user', 'before' => 'user'], function() {
     Route::get('/', ['as' => 'user.index', 'uses' => 'UserController@index']);
     Route::resource('complaints', 'ComplaintsController');
     Route::resource('messages', 'UserMessagesController');

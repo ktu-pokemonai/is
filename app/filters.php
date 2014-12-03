@@ -88,3 +88,30 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('admin',function() {
+    /** @var User $user */
+    $user = Auth::user();
+
+    if(!$user->is_admin) {
+        return Redirect::route('home');
+    }
+});
+
+Route::filter('manager', function() {
+    /** @var User $user */
+    $user = Auth::user();
+
+    if($user->apartment_id) {
+        return Redirect::route('home');
+    }
+});
+
+Route::filter('user', function() {
+    /** User $user */
+    $user = Auth::user();
+
+    if(!$user->apartment_id) {
+        return Redirect::route('home');
+    }
+});

@@ -60,6 +60,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         unset($data['id']);
 
         $user = User::create($data);
+        return $data;
     }
 
     public function name()
