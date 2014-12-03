@@ -111,10 +111,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     public function setUsernameAttribute($value = null)
     {
-        $firstName = $this->attributes['first_name'];
-        $lastName = $this->attributes['last_name'];
+        if(is_null($value)) {
+            $firstName = $this->attributes['first_name'];
+            $lastName = $this->attributes['last_name'];
 
-        $this->attributes['username'] = Str::slug($firstName . ' ' . $lastName, '.');
+            $this->attributes['username'] = Str::slug($firstName . ' ' . $lastName, '.');
+        } else {
+            $this->attributes['username'] = $value;
+        }
     }
 
     public function setPasswordAttribute($value)
