@@ -55,8 +55,8 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'stud.if.ktu.lt',
-			'database'  => 'rytras',
-			'username'  => 'rytras',
+			'database'  => 'bendrabutis',
+			'username'  => 'root',
 			'password'  => 'Wie9Louthei5ahza',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
