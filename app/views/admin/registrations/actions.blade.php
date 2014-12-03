@@ -1,0 +1,1 @@
+{{ button(route('admin.registrations.edit', [$registration->id]), 'Approve', 'btn btn-sm btn-primary', 'fa fa-check') }}
