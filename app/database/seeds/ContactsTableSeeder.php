@@ -6,9 +6,13 @@ class ContactsTableSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['first_name' => 'Rytis','last_name'  => 'Raslavičius','position'=> 'Administrator','email'=> 'wergimity@gmail.com','phone'=> '+37065627414'],
-            ['first_name' => 'Edita','last_name'  => 'Markauskaitė','position'=> 'Watcher','email'=> 'edita.markauskaitė@ktu.edu','phone'=> null],
-            ['first_name' => 'Martynas','last_name'  => 'Stukas','position'=> 'Watcher','email'=> null,'phone'=> null],
+            ['first_name' => 'Aldona','last_name'  => 'Krivonienė','position'=> 'Administratorė','email'=> '3bendrabutis@ktu.lt','phone'=> '(8 696) 34931'],
+            ['first_name' => 'Onutė','last_name'  => 'Mecelienė','position'=> 'Budėtoja','email'=> null,'phone'=> '(8 693) 39459'],
+            ['first_name' => 'Danguolė','last_name'  => 'Tverskienė','position'=> 'Budėtoja','email'=> null,'phone'=> null],
+            ['first_name' => 'Regina','last_name'  => 'Stankevičienė','position'=> 'Budėtoja','email'=> null,'phone'=> null],
+            ['first_name' => 'Ritonė','last_name'  => 'Žemeckienė','position'=> 'Budėtoja','email'=> null,'phone'=> null],
+            ['first_name' => 'Genė','last_name'  => 'Muliuolienė','position'=> 'Budėtoja','email'=> null,'phone'=> null],
+            ['first_name' => 'Jonas','last_name'  => 'Janušauskas','position'=> 'Ūkio darbininkas','email'=> null,'phone'=> null],
         ];
 
         foreach ($data as $user) {
