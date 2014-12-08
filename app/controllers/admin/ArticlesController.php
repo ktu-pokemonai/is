@@ -48,7 +48,12 @@ class ArticlesController extends \BaseController {
             $article->unpublish();
         }
 
-        return $this->routeSaveClose('admin.articles.edit', 'admin.articles.index', 'Article created successfully');
+        $message = 'Article created successfully';
+        if(Input::has('save_close')) {
+            return $this->routeSuccess('admin.articles.index', $message);
+        }
+
+        return $this->routeSuccess('admin.articles.edit', $message, [$article->id]);
 	}
 
 	/**
@@ -91,7 +96,12 @@ class ArticlesController extends \BaseController {
             $article->unpublish();
         }
 
-        return $this->routeSaveClose('admin.articles.edit', 'admin.articles.index', 'Article updated successfully');
+        $message = 'Article updated successfully';
+        if(Input::has('save_close')) {
+            return $this->routeSuccess('admin.articles.index', $message);
+        }
+
+        return $this->routeSuccess('admin.articles.edit', $message, [$article->id]);
 	}
 
 	/**
