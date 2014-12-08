@@ -1,11 +1,13 @@
 @extends('manager.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-warning"></i>
-        Complaint by {{ $complaint->user->username }}
-    </h1>
+@section('stop')
+<h1 class="page-header">
+    <i class="fa fa-warning"></i>
+    Complaint by {{ $complaint->user->username }}
+</h1>
+@stop
 
+@section('content')
     <div class="well">
         <p>{{ nl2br(e($complaint->text)) }}</p>
         <small>Last update: {{ $complaint->updated_at }}</small>

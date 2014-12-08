@@ -1,11 +1,13 @@
 @extends('manager.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-warning"></i>
-        Complaints
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-warning"></i>
+    Complaints
+</h1>
+@stop
 
+@section('content')
     @foreach($complaints->chunk(3) as $row)
         <div class="row">
             @foreach($row as $complaint)

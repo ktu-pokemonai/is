@@ -1,12 +1,14 @@
 @extends('admin.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-newspaper-o"></i>
-        Articles
-        {{ button(route('admin.articles.create'), 'Create article', 'btn btn-success', 'fa fa-btn fa-plus') }}
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-newspaper-o"></i>
+    Articles
+    {{ button(route('admin.articles.create'), 'Create article', 'btn btn-success', 'fa fa-btn fa-plus') }}
+</h1>
+@stop
 
+@section('content')
     {{ Form::open(['method' => 'delete', 'class' => 'hidden', 'id' => 'remove-article']) }}
     {{ Form::close() }}
 

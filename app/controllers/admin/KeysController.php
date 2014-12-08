@@ -10,10 +10,6 @@ class KeysController extends \BaseController {
         return View::make('admin.keys.index', compact('room', 'keys'));
     }
 
-    public function create($id)
-    {
-    }
-
     public function store($id)
     {
         $room = Room::findOrFail($id);
@@ -22,11 +18,7 @@ class KeysController extends \BaseController {
         /** @var Equipment $equipment */
         Key::create($data);
 
-        return Redirect::route('admin.rooms.keys.index', [$room->id]);
-    }
-
-    public function edit($roomId, $id)
-    {
+        return $this->routeSuccess('admin.rooms.keys.index', 'Key created successfully', [$room->id]);
     }
 
     public function update($roomId, $id)
@@ -37,7 +29,7 @@ class KeysController extends \BaseController {
     {
         Key::destroy($id);
 
-        return Redirect::route('admin.rooms.keys.index', [$roomId]);
+        return $this->routeSuccess('admin.rooms.keys.index', 'Key removed successfully', [$roomId]);
     }
 
 }

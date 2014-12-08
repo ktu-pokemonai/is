@@ -1,12 +1,14 @@
 @extends('admin.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-building"></i>
-        Rooms
-        {{ button(route('admin.rooms.create'), 'Create room', 'btn btn-success', 'fa fa-btn fa-plus') }}
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-building"></i>
+    Rooms
+    {{ button(route('admin.rooms.create'), 'Create room', 'btn btn-success', 'fa fa-btn fa-plus') }}
+</h1>
+@stop
 
+@section('content')
     @include('delete-form')
 
     <table class="table">

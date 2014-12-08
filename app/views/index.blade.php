@@ -1,11 +1,13 @@
 @extends('layout.master')
 
-@section('content')
+@section('header')
     <h1 class="page-header">
         <i class="fa fa-newspaper-o"></i>
         Articles
     </h1>
+@stop
 
+@section('content')
     <div class="list-group">
     @foreach($articles as $article)
         <a class="list-group-item" href="{{ route('article', [$article->id]) }}">

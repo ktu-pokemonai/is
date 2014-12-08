@@ -1,12 +1,14 @@
 @extends('manager.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-user"></i>
-        Guests
-        {{ button(route('manager.guests.create'), 'Register guest', 'btn btn-success', 'fa fa-btn fa-plus') }}
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-user"></i>
+    Guests
+    {{ button(route('manager.guests.create'), 'Register guest', 'btn btn-success', 'fa fa-btn fa-plus') }}
+</h1>
+@stop
 
+@section('content')
     <table class="table">
         <thead>
             <tr>

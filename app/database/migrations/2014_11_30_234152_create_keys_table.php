@@ -18,7 +18,7 @@ class CreateKeysTable extends Migration {
 			$table->integer('room_id', false, true);
 			$table->timestamps();
 
-            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
 		});
 	}
 

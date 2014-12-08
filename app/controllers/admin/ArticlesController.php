@@ -10,7 +10,7 @@ class ArticlesController extends \BaseController {
 	 */
 	public function index()
 	{
-        $articles = Article::all();
+        $articles = Article::orderBy('updated_at', 'desc')->get();
 
 		return View::make('admin.articles.index', compact('articles'));
 	}
@@ -35,29 +35,20 @@ class ArticlesController extends \BaseController {
 	public function store()
 	{
         $article = Article::create(Input::all());
+
+        $validator = Validator::make($data = Input::all(), Article::$rules);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
+
         if(Input::has('publish')) {
             $article->publish();
         } else {
             $article->unpublish();
         }
 
-        if(Input::has('save_close')) {
-            return Redirect::route('admin.articles.index');
-        }
-
-        return Redirect::route('admin.articles.edit', [$article->id]);
-	}
-
-	/**
-	 * Display the specified resource.
-	 * GET /articles/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
+        return $this->routeSaveClose('admin.articles.edit', 'admin.articles.index', 'Article created successfully');
 	}
 
 	/**
@@ -87,6 +78,11 @@ class ArticlesController extends \BaseController {
 		$article = Article::findOrFail($id);
         $data = Input::all();
 
+        $validator = Validator::make($data = Input::all(), Article::$rules);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
 
         $article->update($data);
         if(Input::has('publish')) {
@@ -95,11 +91,7 @@ class ArticlesController extends \BaseController {
             $article->unpublish();
         }
 
-        if(Input::has('save_close')) {
-            return Redirect::route('admin.articles.index');
-        }
-
-        return Redirect::route('admin.articles.edit', [$article->id]);
+        return $this->routeSaveClose('admin.articles.edit', 'admin.articles.index', 'Article updated successfully');
 	}
 
 	/**
@@ -111,9 +103,12 @@ class ArticlesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+        /** @var Article $article */
 		$article = Article::findOrFail($id);
 
-        return Redirect::route('admin.articles.index');
+        $article->delete();
+
+        return $this->routeSuccess('admin.articles.index', 'Article deleted successfully');
 	}
 
 }

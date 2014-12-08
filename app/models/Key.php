@@ -12,6 +12,7 @@
  * @method static \Illuminate\Database\Query\Builder|\Key whereRoomId($value)
  * @method static \Illuminate\Database\Query\Builder|\Key whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Key whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\KeyIssue[] $issues
  */
 class Key extends \Eloquent {
 	protected $fillable = ['room_id'];

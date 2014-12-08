@@ -12,7 +12,14 @@
     @include('layout.partial.navbar')
 
     <div class="container">
+        @yield('header')
+
+        @section('messages')
+            @include('layout.messages')
+        @show
+
         @yield('content')
     </div>
+
 </body>
 </html>

@@ -21,8 +21,8 @@ class CreateKeyIssuesTable extends Migration {
 			$table->timestamp('returned_at')->nullable();
 			$table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('key_id')->references('id')->on('keys');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('key_id')->references('id')->on('keys')->onDelete('cascade');
 		});
 	}
 

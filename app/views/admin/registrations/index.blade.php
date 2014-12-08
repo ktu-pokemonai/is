@@ -1,11 +1,13 @@
 @extends('admin.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-user"></i>
-        Registrations
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-user"></i>
+    Registrations
+</h1>
+@stop
 
+@section('content')
     <table class="table">
         <thead>
             <tr>

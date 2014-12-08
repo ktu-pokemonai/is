@@ -1,17 +1,19 @@
 @extends('admin.layout')
 
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-key"></i>
+    Keys for room {{ $room->id }}
+    <button class="btn btn-success" type="submit" form="create-key">
+        <i class="fa fa-btn fa-plus"></i>
+        Create key
+    </button>
+</h1>
+@stop
+
 @section('content')
     {{ Form::open(['route' => ['admin.rooms.keys.store', $room->id], 'method' => 'post', 'class' => 'hidden', 'id' => 'create-key']) }}
     {{ Form::close() }}
-
-    <h1 class="page-header">
-        <i class="fa fa-key"></i>
-        Keys for room {{ $room->id }}
-        <button class="btn btn-success" type="submit" form="create-key">
-            <i class="fa fa-btn fa-plus"></i>
-            Create key
-        </button>
-    </h1>
 
     @include('delete-form')
 

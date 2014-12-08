@@ -20,8 +20,8 @@
  * @method static \Illuminate\Database\Query\Builder|\Message whereUpdatedAt($value)
  * @property string $subject
  * @property string $viewed_at
- * @method static \Illuminate\Database\Query\Builder|\Message whereSubject($value) 
- * @method static \Illuminate\Database\Query\Builder|\Message whereViewedAt($value) 
+ * @method static \Illuminate\Database\Query\Builder|\Message whereSubject($value)
+ * @method static \Illuminate\Database\Query\Builder|\Message whereViewedAt($value)
  */
 class Message extends \Eloquent {
 

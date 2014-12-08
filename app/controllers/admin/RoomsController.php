@@ -41,23 +41,13 @@ class RoomsController extends \BaseController {
         /** @var Room $room */
 		$room = Room::create($data);
 
+        $message = 'Room created successfully';
         if(Input::has('save_close')) {
-            return Redirect::route('admin.rooms.index');
+            return $this->routeSuccess('admin.rooms.index', $message);
         }
 
-        return Redirect::route('admin.rooms.create');
-
+        return $this->routeSuccess('admin.rooms.create', $message);
     }
-
-	/**
-	 * Display the specified room.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-	}
 
 	/**
 	 * Show the form for editing the specified room.
@@ -91,7 +81,12 @@ class RoomsController extends \BaseController {
 
 		$room->update($data);
 
-		return Redirect::route('rooms.index');
+        $message = 'Room updated successfully';
+        if(Input::has('save_close')) {
+            return $this->routeSuccess('admin.rooms.index', $message);
+        }
+
+        return $this->routeSuccess('admin.rooms.edit', $message, [$room->id]);
 	}
 
 	/**
@@ -102,6 +97,9 @@ class RoomsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+        /** @var Room $room */
+        $room = Room::findOrFail($id);
+
 		Room::destroy($id);
 
 		return Redirect::route('admin.rooms.index');

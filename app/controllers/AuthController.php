@@ -16,22 +16,22 @@ class AuthController extends BaseController
             $user = Auth::user();
 
             if($user->is_admin) {
-                return Redirect::route('admin.index');
+                return $this->routeSuccess('admin.index', 'Logged in as administrator');
             } elseif (!$user->apartment_id) {
-                return Redirect::route('manager.index');
+                return $this->routeSuccess('manager.index', 'Logged in as manager');
             } else {
-                return Redirect::route('user.index');
+                return $this->routeSuccess('user.index', 'Logged in as user');
             }
         }
 
-        return Redirect::route('auth.login');
+        return $this->routeWarning('auth.login', 'Wrong credentials');
     }
 
     public function logout()
     {
         Auth::logout();
 
-        return Redirect::route('home');
+        return $this->routeSuccess('home', 'Logged out successfully');
     }
 
 }

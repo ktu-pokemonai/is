@@ -23,7 +23,7 @@ class CreateEquipmentsTable extends Migration {
 			$table->integer('duration');
 			$table->timestamps();
 
-            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
 		});
 	}
 

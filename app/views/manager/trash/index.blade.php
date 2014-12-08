@@ -1,12 +1,14 @@
 @extends('manager.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-trash-o"></i>
-        Trash
-        {{ button(route('manager.trash.create'), 'Register trash', 'btn btn-success', 'fa fa-btn fa-plus') }}
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-trash-o"></i>
+    Trash
+    {{ button(route('manager.trash.create'), 'Register trash', 'btn btn-success', 'fa fa-btn fa-plus') }}
+</h1>
+@stop
 
+@section('content')
     {{ Form::open(['method' => 'delete', 'id' => 'delete-trash']) }}
 
     <table class="table">

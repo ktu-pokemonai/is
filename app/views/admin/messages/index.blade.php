@@ -1,12 +1,14 @@
 @extends('admin.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-envelope-o"></i>
-        Messages
-        {{ button(route('admin.messages.create'), 'Create message', 'btn btn-success', 'fa fa-btn fa-plus') }}
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-envelope-o"></i>
+    Messages
+    {{ button(route('admin.messages.create'), 'Create message', 'btn btn-success', 'fa fa-btn fa-plus') }}
+</h1>
+@stop
 
+@section('content')
     {{ Form::open(['method' => 'delete', 'id' => 'remove-message', 'class' => 'hidden']) }}
     {{ Form::close() }}
 

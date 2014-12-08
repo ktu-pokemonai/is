@@ -1,11 +1,13 @@
 @extends('layout.master')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-picture-o"></i>
-        Gallery
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-picture-o"></i>
+    Gallery
+</h1>
+@stop
 
+@section('content')
     @foreach($images->chunk(4) as $row)
         <div class="row">
         @foreach($row as $image)

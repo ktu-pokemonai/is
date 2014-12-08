@@ -9,12 +9,12 @@
  * @property string $reserved_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @method static \Illuminate\Database\Query\Builder|\Reservation whereId($value) 
- * @method static \Illuminate\Database\Query\Builder|\Reservation whereUserId($value) 
- * @method static \Illuminate\Database\Query\Builder|\Reservation whereEquipmentId($value) 
- * @method static \Illuminate\Database\Query\Builder|\Reservation whereReservedAt($value) 
- * @method static \Illuminate\Database\Query\Builder|\Reservation whereCreatedAt($value) 
- * @method static \Illuminate\Database\Query\Builder|\Reservation whereUpdatedAt($value) 
+ * @method static \Illuminate\Database\Query\Builder|\Reservation whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Reservation whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Reservation whereEquipmentId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Reservation whereReservedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Reservation whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Reservation whereUpdatedAt($value)
  */
 class Reservation extends \Eloquent
 {

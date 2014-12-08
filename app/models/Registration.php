@@ -19,6 +19,7 @@
  * @method static \Illuminate\Database\Query\Builder|\Registration wherePhone($value)
  * @method static \Illuminate\Database\Query\Builder|\Registration whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Registration whereUpdatedAt($value)
+ * @property-read \Apartment $apartment
  */
 class Registration extends \Eloquent {
     public static $rules = [];

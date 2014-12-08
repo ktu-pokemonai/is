@@ -1,11 +1,13 @@
 @extends('layout.master')
 
-@section('content')
+@section('header')
     <h1 class="page-header">
         <i class="fa fa-user"></i>
         Contacts
     </h1>
+@stop
 
+@section('content')
     <table class="table table-hover">
         <thead>
             <tr>

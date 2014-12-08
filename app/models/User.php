@@ -38,6 +38,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Complaint[] $complaints
  * @property-read \Illuminate\Database\Eloquent\Collection|\ComplaintResponses[] $complaintResponses
  * @method static \Illuminate\Database\Query\Builder|\User whereApartmentId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\KeyIssue[] $keyIssues
  */
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
@@ -49,6 +50,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	protected $hidden = array('password', 'remember_token');
 
+    /**
+     * Creates user from registration
+     *
+     * @param Registration $registration
+     *
+     * @return static
+     */
     public static function register(Registration $registration)
     {
         $data = $registration->toArray();
@@ -59,8 +67,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         unset($data['updated_at']);
         unset($data['id']);
 
-        $user = User::create($data);
-        return $data;
+        return User::create($data);
     }
 
     public function name()
@@ -108,18 +115,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function keyIssues()
     {
         return $this->hasMany('KeyIssue');
-    }
-
-    public function setUsernameAttribute($value = null)
-    {
-        if(is_null($value)) {
-            $firstName = $this->attributes['first_name'];
-            $lastName = $this->attributes['last_name'];
-
-            $this->attributes['username'] = Str::slug($firstName . ' ' . $lastName, '.');
-        } else {
-            $this->attributes['username'] = $value;
-        }
     }
 
     public function setPasswordAttribute($value)

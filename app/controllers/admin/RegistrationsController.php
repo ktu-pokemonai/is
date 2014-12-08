@@ -45,11 +45,18 @@ class RegistrationsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-        $userdata = User::register($registration);
+        $data['username'] = Str::slug($data['first_name'] . ' ' . $data['last_name'], '.');
+        $data['password'] = Str::random();
+        if(isset($data['apartment_id']) && !$data['apartment_id']) {
+            unset($data['apartment_id']);
+        }
+
+        $user = User::create($data);
         $registration->delete();
 
+        $message = sprintf('User %s created with password %s', $data['username'], $data['password']);
 		if(Input::has('save_close')) {
-            return Redirect::route('admin.registrations.index');
+            return Redirect::route('admin.registrations.index')->with('success', $message);
         }
 
         $nextRegistration = Registration::first();

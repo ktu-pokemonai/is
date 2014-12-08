@@ -20,6 +20,8 @@
  */
 class Article extends \Eloquent
 {
+    public static $rules = [];
+
     protected $table = 'articles';
 
     protected $fillable = ['title', 'short_text', 'long_text', 'published_at'];

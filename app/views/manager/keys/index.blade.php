@@ -1,12 +1,14 @@
 @extends('manager.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-key"></i>
-        Keys
-        {{ button(route('manager.keys.create'), 'Issue key', 'btn btn-success', 'fa fa-btn fa-plus') }}
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-key"></i>
+    Keys
+    {{ button(route('manager.keys.create'), 'Issue key', 'btn btn-success', 'fa fa-btn fa-plus') }}
+</h1>
+@stop
 
+@section('content')
     {{ Form::open(['method' => 'patch', 'class' => 'hidden', 'id' => 'update-key-issue']) }}
     {{ Form::close() }}
 

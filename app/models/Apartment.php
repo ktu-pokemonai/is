@@ -14,11 +14,12 @@
  * @method static \Illuminate\Database\Query\Builder|\Apartment whereCapacity($value)
  * @method static \Illuminate\Database\Query\Builder|\Apartment whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Apartment whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Registration[] $registrations
  */
 class Apartment extends \Eloquent {
 
     public static $rules = [
-        'nr' => 'required|integer',
+        'nr' => 'required|integer|unique:apartments,nr',
         'capacity' => 'required|integer',
     ];
 	// Don't forget to fill this array

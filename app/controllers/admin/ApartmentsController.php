@@ -9,7 +9,7 @@ class ApartmentsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$apartments = Apartment::all();
+		$apartments = Apartment::orderBy('nr')->get();
 
 		return View::make('admin.apartments.index', compact('apartments'));
 	}
@@ -40,60 +40,8 @@ class ApartmentsController extends \BaseController {
 
 		Apartment::create($data);
 
-        if(Input::has('save_close')) {
-            return Redirect::route('admin.apartments.index');
-        }
-
-        return Redirect::route('admin.apartments.create');
+        return $this->routeSaveClose('admin.apartments.create', 'admin.apartments.index', 'Apartment created successfully');
     }
-
-	/**
-	 * Display the specified apartment.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$apartment = Apartment::findOrFail($id);
-
-		return View::make('apartments.show', compact('apartment'));
-	}
-
-	/**
-	 * Show the form for editing the specified apartment.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$apartment = Apartment::find($id);
-
-		return View::make('apartments.edit', compact('apartment'));
-	}
-
-	/**
-	 * Update the specified apartment in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		$apartment = Apartment::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Apartment::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
-
-		$apartment->update($data);
-
-		return Redirect::route('apartments.index');
-	}
 
 	/**
 	 * Remove the specified apartment from storage.
@@ -103,9 +51,15 @@ class ApartmentsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Apartment::destroy($id);
+        /** @var Apartment $apartment */
+        $apartment = Apartment::findOrFail($id);
+        if(!$apartment->users->isEmpty()) {
+            return $this->routeWarning('admin.apartments.index', 'Cannot remove apartment, because it has registered users');
+        }
 
-		return Redirect::route('admin.apartments.index');
+        $apartment->delete();
+
+		return $this->routeSuccess('admin.apartments.index', 'Apartment deleted successfully');
 	}
 
 }

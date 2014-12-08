@@ -38,7 +38,7 @@ class HomeController extends BaseController {
 
         Registration::create($data);
 
-        return Redirect::route('home');
+        return $this->routeSuccess('home', 'Registration sent successfully');
     }
 
 }

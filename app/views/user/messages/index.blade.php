@@ -1,11 +1,13 @@
 @extends('user.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-envelope-o"></i>
-        Messages
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-envelope-o"></i>
+    Messages
+</h1>
+@stop
 
+@section('content')
     <div class="list-group">
     @foreach($messages as $message)
         <a href="{{ route('user.messages.show', [$message->id]) }}" class="list-group-item">

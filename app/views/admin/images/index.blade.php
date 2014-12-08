@@ -1,12 +1,14 @@
 @extends('admin.layout')
 
-@section('content')
-    <h1 class="page-header">
-        <i class="fa fa-picture-o"></i>
-        Gallery
-        {{ button(route('admin.images.create'), 'Upload image', 'btn btn-success', 'fa fa-btn fa-plus') }}
-    </h1>
+@section('header')
+<h1 class="page-header">
+    <i class="fa fa-picture-o"></i>
+    Gallery
+    {{ button(route('admin.images.create'), 'Upload image', 'btn btn-success', 'fa fa-btn fa-plus') }}
+</h1>
+@stop
 
+@section('content')
     @include('delete-form')
 
     @foreach($images->chunk(4) as $row)
