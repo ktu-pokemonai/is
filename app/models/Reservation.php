@@ -19,4 +19,16 @@
 class Reservation extends \Eloquent
 {
     protected $fillable = ['user_id', 'equipment_id', 'reserved_at'];
+
+    protected $dates = ['reserved_at'];
+
+    public function equipment()
+    {
+        return $this->belongsTo('Equipment');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 }

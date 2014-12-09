@@ -33,6 +33,11 @@ class Equipment extends \Eloquent
         return $this->belongsTo('Room');
     }
 
+    public function reservations()
+    {
+        return $this->hasMany('Reservation');
+    }
+
     public function setFromMinAttribute($value)
     {
         if(strpos($value, ':') === false) {
@@ -69,5 +74,15 @@ class Equipment extends \Eloquent
         $min = $value - ($hours * 60);
 
         return str_pad($hours, 2, '0', STR_PAD_LEFT) . ':' . str_pad($min, 2, '0', STR_PAD_LEFT);
+    }
+
+    public function from()
+    {
+        return (int)$this->attributes['from_min'];
+    }
+
+    public function to()
+    {
+        return (int)$this->attributes['to_min'];
     }
 }

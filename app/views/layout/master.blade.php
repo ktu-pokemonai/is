@@ -21,5 +21,7 @@
         @yield('content')
     </div>
 
+    @include('layout.partial.footer')
+
 </body>
 </html>

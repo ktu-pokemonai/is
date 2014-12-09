@@ -15,15 +15,15 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Equipment / Capacity</th>
-                <th>Actions</th>
+                <th class="text-center">Equipment / Keys / Capacity</th>
+                <th class="col-md-2">Actions</th>
             </tr>
         </thead>
         <tbody>
         @foreach($rooms as $room)
             <tr>
                 <td>{{ $room->name }}</td>
-                <td>{{ $room->equipment->count() }} / {{ $room->capacity }}</td>
+                <td class="text-center">{{ $room->equipment->count() }} / {{ $room->keys->count() }} / {{ $room->capacity }}</td>
                 <td>@include('admin.rooms.actions')</td>
             </tr>
         @endforeach

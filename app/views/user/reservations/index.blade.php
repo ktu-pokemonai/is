@@ -8,8 +8,18 @@
 @stop
 
 @section('content')
-    <div class="alert alert-danger">
-        <i class="fa fa-btn fa-warning"></i>
-        Needs to be finished!
-    </div>
+    @foreach($rooms->chunk(3) as $row)
+        <div class="row">
+        @foreach($row as $room)
+            <div class="col-md-4">
+                <h2>{{{ $room->name }}}</h2>
+                <div class="list-group">
+                @foreach($room->equipment as $item)
+                    <a class="list-group-item" href="{{ route('user.equipment.show', [$item->id]) }}">{{{ $item->name }}}</a>
+                @endforeach
+                </div>
+            </div>
+        @endforeach
+        </div>
+    @endforeach
 @stop

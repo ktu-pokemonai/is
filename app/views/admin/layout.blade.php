@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('menu')
-    {{ nav(route('admin.index'), 'Home', 'fa fa-btn fa-home') }}
+    {{ nav(route('home'), 'Home', 'fa fa-btn fa-home') }}
     <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-btn fa-user"></i>

@@ -9,7 +9,7 @@ class RoomsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$rooms = Room::all();
+		$rooms = Room::with(['equipment', 'keys'])->get();
 
 		return View::make('admin.rooms.index', compact('rooms'));
 	}
@@ -99,6 +99,14 @@ class RoomsController extends \BaseController {
 	{
         /** @var Room $room */
         $room = Room::findOrFail($id);
+
+        if(!$room->equipment->isEmpty()) {
+            return $this->routeWarning('admin.rooms.index', 'Cannot remove room with equipment!');
+        }
+
+        if(!$room->keys->isEmpty()) {
+            return $this->routeWarning('admin.rooms.index', 'Cannot remove room with keys!');
+        }
 
 		Room::destroy($id);
 

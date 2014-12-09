@@ -36,3 +36,11 @@ if (!function_exists('button')) {
         return View::make('layout.button', compact('url', 'name', 'class', 'icon'));
     }
 }
+
+function min_to_time($value)
+{
+    $hours = floor($value / 60);
+    $min = $value - ($hours * 60);
+
+    return str_pad($hours, 2, '0', STR_PAD_LEFT) . ':' . str_pad($min, 2, '0', STR_PAD_LEFT);
+}
