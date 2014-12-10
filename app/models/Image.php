@@ -17,7 +17,7 @@
 class Image extends \Eloquent
 {
     public static $rules = [
-        'filename' => 'required'
+        'image' => 'required'
     ];
 
     // Don't forget to fill this array
