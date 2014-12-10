@@ -25,7 +25,12 @@
  */
 class Equipment extends \Eloquent
 {
-    public static $rules = [];
+    public static $rules = [
+        'name' => 'required|min:3',
+        'capacity' => 'required|integer',
+        'duration' => 'required|integer',
+    ];
+
     protected $fillable = ['room_id', 'name', 'from_min', 'to_min', 'duration', 'capacity'];
 
     public function room()

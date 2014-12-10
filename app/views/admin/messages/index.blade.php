@@ -23,7 +23,7 @@
         <tbody>
         @foreach($messages as $message)
             <tr>
-                <td>{{ $message->user->username }}</td>
+                <td>{{ $message->user->name() }}</td>
                 <td>{{ $message->message }}</td>
                 <td>@include('admin.messages.actions')</td>
             </tr>

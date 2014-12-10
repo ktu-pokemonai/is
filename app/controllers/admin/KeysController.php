@@ -21,10 +21,6 @@ class KeysController extends \BaseController {
         return $this->routeSuccess('admin.rooms.keys.index', 'Key created successfully', [$room->id]);
     }
 
-    public function update($roomId, $id)
-    {
-    }
-
     public function destroy($roomId, $id)
     {
         Key::destroy($id);

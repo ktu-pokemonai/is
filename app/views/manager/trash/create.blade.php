@@ -7,6 +7,6 @@
             {{ Form::select('apartment_id', Apartment::lists('nr', 'id'), null, ['class' => 'form-control']) }}
         </div>
 
-        @include('manager.actions', ['back' => 'manager.trash.index'])
+        @include('manager.actions', ['back' => route('manager.trash.index')])
     {{ Form::close() }}
 @stop

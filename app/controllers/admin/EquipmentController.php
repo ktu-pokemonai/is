@@ -21,15 +21,21 @@ class EquipmentController extends \BaseController {
 	{
         $room = Room::findOrFail($id);
         $data = ['room_id' => $room->id] + Input::all();
+        $validator = Validator::make($data, Equipment::$rules);
+
+        if($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput();
+        }
 
         /** @var Equipment $equipment */
         $equipment = Equipment::create($data);
 
+        $message = 'Equipment created successfully.';
         if(Input::has('save_close')) {
-            return Redirect::route('admin.rooms.equipment.index', [$room->id]);
+            return $this->routeSuccess('admin.rooms.equipment.index', $message, [$room->id]);
         }
 
-        return Redirect::route('admin.rooms.equipment.create', [$room->id]);
+        return $this->routeSuccess('admin.rooms.equipment.create', $message, [$room->id]);
 	}
 
 	public function edit($roomId, $id)
@@ -49,11 +55,12 @@ class EquipmentController extends \BaseController {
 
         $equipment->update(Input::all());
 
+        $message = 'Equipment updated successfully';
         if(Input::has('save_close')) {
-            return Redirect::route('admin.rooms.equipment.index', [$room->id]);
+            return $this->routeSuccess('admin.rooms.equipment.index', $message, [$room->id]);
         }
 
-        return Redirect::route('admin.rooms.equipment.edit', [$room->id, $equipment->id]);
+        return $this->routeSuccess('admin.rooms.equipment.edit', $message, [$room->id, $equipment->id]);
 	}
 
 	public function destroy($roomId, $id)

@@ -56,16 +56,16 @@ class RegistrationsController extends \BaseController {
 
         $message = sprintf('User %s created with password %s', $data['username'], $data['password']);
 		if(Input::has('save_close')) {
-            return Redirect::route('admin.registrations.index')->with('success', $message);
+            return $this->routeSuccess('admin.registrations.index', $message);
         }
 
         $nextRegistration = Registration::first();
 
         if(!$nextRegistration) {
-            return Redirect::route('admin.registrations.index');
+            return $this->routeInfo('admin.registrations.index', 'There are no more registrations');
         }
 
-        return Redirect::route('admin.registrations.edit', [$nextRegistration->id]);
+        return $this->routeSuccess('admin.registrations.edit', $message, [$nextRegistration->id]);
     }
 
 	/**
@@ -78,7 +78,7 @@ class RegistrationsController extends \BaseController {
 	{
 		Registration::destroy($id);
 
-		return Redirect::route('admin.registrations.index');
+        return $this->routeSuccess('admin.registrations.index', 'Registration removed successfully');
 	}
 
 }

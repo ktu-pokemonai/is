@@ -23,6 +23,7 @@ class Penalty extends \Eloquent {
 
     public static $rules = [
         'user_id' => 'required',
+        'reason' => 'required',
     ];
 
     public function user()

@@ -12,6 +12,6 @@
             {{ Form::textarea('description', null, ['class' => 'form-control', 'rows' => 3]) }}
         </div>
 
-        @include('admin.actions', ['back' => route('admin.images.index')])
+        @include('admin.actions', ['back' => route('admin.images.index'), 'save' => 'Save & new'])
     {{ Form::close() }}
 @stop

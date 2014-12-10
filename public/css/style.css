@@ -42,3 +42,8 @@ body {
 footer .nav li {
     margin: 40px 10px;
 }
+
+.day {
+    padding: 25px;
+    text-align: center;
+}

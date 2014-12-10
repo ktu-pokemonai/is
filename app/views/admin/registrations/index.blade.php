@@ -8,6 +8,8 @@
 @stop
 
 @section('content')
+    @include('delete-form')
+
     <table class="table">
         <thead>
             <tr>

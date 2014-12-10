@@ -9,7 +9,7 @@
 
         <div class="form-group">
             {{ Form::label('user_id', 'User', ['class' => 'control-label']) }}
-            {{ Form::select('user_id', User::lists('username', 'id'), null, ['class' => 'form-control']) }}
+            {{ Form::select('user_id', $userslist, null, ['class' => 'form-control']) }}
         </div>
 
         @include('manager.actions', ['back' => route('manager.keys.index')])

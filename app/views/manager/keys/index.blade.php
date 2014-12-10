@@ -27,7 +27,7 @@
         <tr>
             <td>{{ $issue->key->id }}</td>
             <td>{{ $issue->key->room->name }}</td>
-            <td>{{ $issue->user->username }}</td>
+            <td>{{ $issue->user->name() }}</td>
             <td>{{ $issue->issued_at }}</td>
             <td>@include('manager.keys.actions')</td>
         </tr>

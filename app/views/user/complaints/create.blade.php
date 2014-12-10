@@ -7,6 +7,6 @@
             {{ Form::textarea('text', null, ['class' => 'form-control']) }}
         </div>
 
-        @include('user.actions', ['back' => route('user.complaints.index')])
+        @include('user.actions', ['back' => route('user.complaints.index'), 'save' => 'Send'])
     {{ Form::close() }}
 @stop

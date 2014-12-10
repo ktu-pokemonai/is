@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 
 /**
  * Room
@@ -33,5 +34,37 @@ class Room extends \Eloquent {
     public function keys()
     {
         return $this->hasMany('Key');
+    }
+
+    /**
+     * @param int $from Timestamp from where to start looking
+     */
+    public function findEmptyTime($from)
+    {
+        /** @var EquipmentDayComposer $composer */
+        $composer = App::make('EquipmentDayComposer');
+        $from = Carbon::createFromTimestamp($from);
+
+        for($i = 0; $i < 10; $i++) {
+            $date = $from->addDay()->format('Y-m-d');
+
+            foreach($this->equipment as $item) {
+                $day = $composer->getDay($item, $date);
+
+                foreach($day as $min => $status) {
+                    if($status == 'open') {
+                        $time = min_to_time($min);
+                        list($year, $month, $day) = explode('-', $date);
+                        list($hour, $minutes) = explode(':', $time);
+
+                        $dateTime = Carbon::create($year, $month, $day, $hour, $minutes, 0);
+
+                        return [$item, $dateTime];
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 }

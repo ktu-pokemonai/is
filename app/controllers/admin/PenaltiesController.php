@@ -44,38 +44,8 @@ class PenaltiesController extends \BaseController {
             return Redirect::route('admin.penalties.index');
         }
 
-        return Redirect::route('admin.penalties.create');
+        return $this->routeSaveClose('admin.penalties.create', 'admin.penalties.index', 'Penalty issues successfully');
     }
-
-	/**
-	 * Display the specified penalty.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-	}
-
-	/**
-	 * Show the form for editing the specified penalty.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-	}
-
-	/**
-	 * Update the specified penalty in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-	}
 
 	/**
 	 * Remove the specified penalty from storage.
@@ -87,7 +57,7 @@ class PenaltiesController extends \BaseController {
 	{
 		Penalty::destroy($id);
 
-		return Redirect::route('admin.penalties.index');
+        return $this->routeSuccess('admin.penalties.index', 'Penalty removed successfully');
 	}
 
 }

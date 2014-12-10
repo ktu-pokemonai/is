@@ -23,7 +23,7 @@
         <tbody>
         @foreach($penalties as $penalty)
             <tr>
-                <td>{{ $penalty->user->username }}</td>
+                <td>{{ $penalty->user->name() }}</td>
                 <td>{{ $penalty->reason }}</td>
                 <td>@include('admin.penalties.actions')</td>
             </tr>

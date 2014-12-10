@@ -41,12 +41,7 @@ class RoomsController extends \BaseController {
         /** @var Room $room */
 		$room = Room::create($data);
 
-        $message = 'Room created successfully';
-        if(Input::has('save_close')) {
-            return $this->routeSuccess('admin.rooms.index', $message);
-        }
-
-        return $this->routeSuccess('admin.rooms.create', $message);
+        return $this->routeSaveClose('admin.rooms.create', 'admin.rooms.index', 'Room created successfully');
     }
 
 	/**
@@ -110,7 +105,7 @@ class RoomsController extends \BaseController {
 
 		Room::destroy($id);
 
-		return Redirect::route('admin.rooms.index');
+        return $this->routeSuccess('admin.rooms.index', 'Room removed successfully');
 	}
 
 }

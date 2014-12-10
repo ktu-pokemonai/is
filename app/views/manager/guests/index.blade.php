@@ -9,6 +9,7 @@
 @stop
 
 @section('content')
+    @include('delete-form')
     <table class="table">
         <thead>
             <tr>
@@ -24,7 +25,7 @@
         <tbody>
         @foreach($guests as $guest)
             <tr>
-                <td>{{ $guest->user->username }}</td>
+                <td>{{ $guest->user->name() }}</td>
                 <td>{{ $guest->user->apartment->nr }}</td>
                 <td>{{ $guest->first_name }}</td>
                 <td>{{ $guest->last_name }}</td>

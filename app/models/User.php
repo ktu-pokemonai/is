@@ -75,11 +75,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         $result = [];
         $result[] = $this->first_name;
         $result[] = $this->last_name;
-        if($this->apartment) {
-            $result[] = $this->apartment->nr;
+
+        $result = trim(join(' ', $result));
+
+        if(!$result) {
+            return $this->username;
         }
 
-        return join(' ', $result);
+
+        return $result;
     }
 
     public function penalties()

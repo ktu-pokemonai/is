@@ -89,13 +89,7 @@ class ImagesController extends \BaseController {
 	public function update($id)
 	{
 		$image = Image::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Image::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
+        $data = Input::all();
 
 		$image->update($data);
 

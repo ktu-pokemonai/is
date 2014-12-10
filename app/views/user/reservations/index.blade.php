@@ -1,6 +1,14 @@
 @extends('user.layout')
 
 @section('header')
+</div>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Quick reservation</h1>
+        @include('user.reservations.quick')
+    </div>
+</div>
+<div class="container">
 <h1 class="page-header">
     <i class="fa fa-desktop"></i>
     Equipment reservation

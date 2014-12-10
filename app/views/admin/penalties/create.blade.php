@@ -11,7 +11,7 @@
                 {{ Form::open(['route' => 'admin.penalties.store', 'method' => 'post']) }}
                     <div class="form-group">
                         {{ Form::label('user_id', 'User', ['class' => 'control-label']) }}
-                        {{ Form::select('user_id', User::lists('username', 'id'), null, ['class' => 'form-control']) }}
+                        {{ Form::select('user_id', $userslist, null, ['class' => 'form-control']) }}
                     </div>
 
                     <div class="form-group">
@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="form-group">
-                        @include('admin.actions', ['back' => route('admin.penalties.index')])
+                        @include('admin.actions', ['back' => route('admin.penalties.index'), 'save' => 'Save & new'])
                     </div>
                 {{ Form::close() }}
               </div>

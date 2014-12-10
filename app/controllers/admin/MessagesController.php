@@ -40,42 +40,8 @@ class MessagesController extends \BaseController {
 
 		Message::create($data);
 
-        if(Input::has('save_close')) {
-            return Redirect::route('admin.messages.index');
-        }
-
-        return Redirect::route('admin.messages.create');
+        return $this->routeSaveClose('admin.messages.create', 'admin.messages.index', 'Message sent successfully');
     }
-
-	/**
-	 * Display the specified message.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-	}
-
-	/**
-	 * Show the form for editing the specified message.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-	}
-
-	/**
-	 * Update the specified message in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-	}
 
 	/**
 	 * Remove the specified message from storage.

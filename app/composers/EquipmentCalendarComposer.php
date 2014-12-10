@@ -51,10 +51,10 @@ class EquipmentCalendarComposer
 
     protected function getDay(Carbon $date, Carbon $today)
     {
-        $class = ['btn', 'btn-block'];
+        $class = ['btn', 'btn-block', 'day'];
 
         if($date < $today) {
-            return $date->day;
+            return '<div class="day">' . $date->day . '</div>';
         } elseif ($date == $today) {
             $class[] = 'btn-primary';
         } else {

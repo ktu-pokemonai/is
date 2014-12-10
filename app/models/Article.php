@@ -20,7 +20,9 @@
  */
 class Article extends \Eloquent
 {
-    public static $rules = [];
+    public static $rules = [
+        'title' => 'required|min:3',
+    ];
 
     protected $table = 'articles';
 

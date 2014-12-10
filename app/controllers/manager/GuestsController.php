@@ -9,7 +9,7 @@ class GuestsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$guests = Guest::all();
+		$guests = Guest::whereNull('left_at')->get();
 
 		return View::make('manager.guests.index', compact('guests'));
 	}
@@ -38,6 +38,7 @@ class GuestsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
+        $data['updated_at'] = null;
 		Guest::create($data);
 
 		return Redirect::route('manager.guests.index');
@@ -96,6 +97,12 @@ class GuestsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
+        $guest = Guest::findOrFail($id);
+
+        $guest->left_at = \Carbon\Carbon::now();
+        $guest->save();
+
+        return $this->routeSuccess('manager.guests.index', 'Guest registered as left');
 	}
 
 }

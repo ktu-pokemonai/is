@@ -15,5 +15,5 @@
 
 <div class="form-group">
     {{ Form::label('user_id', 'User', ['class' => 'control-label']) }}
-    {{ Form::select('user_id', User::whereNotNull('apartment_id')->lists('username', 'id'), null, ['class' => 'form-control']) }}
+    {{ Form::select('user_id', $userslist, null, ['class' => 'form-control']) }}
 </div>

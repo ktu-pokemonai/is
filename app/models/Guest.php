@@ -22,7 +22,7 @@
 class Guest extends \Eloquent {
 
 	// Don't forget to fill this array
-	protected $fillable = ['first_name', 'last_name', 'id_nr', 'user_id'];
+	protected $fillable = ['first_name', 'last_name', 'id_nr', 'user_id', 'updated_at'];
 
     public static $rules = [
         'first_name' => 'required',

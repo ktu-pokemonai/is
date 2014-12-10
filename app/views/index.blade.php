@@ -1,9 +1,5 @@
 @extends('layout.master')
 
-@section('header')
-
-@stop
-
 @section('content')
     </div>
     <div class="jumbotron">
